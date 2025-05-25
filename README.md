@@ -1,112 +1,116 @@
-Food Journal App README
-This app is a React Native application built with Expo that allows users to create, edit, and manage food journal entries with images, descriptions, and categories. It uses the device camera and media library for image selection and stores data locally in a SQLite database.
+App Screenshot <!-- Replace with actual screenshot -->
+
+A mobile application built with React Native that allows users to track their daily meals with photos, descriptions, and categories.
 
 Features
-Capture photos using the device camera or select images from the gallery
+📷 Take photos of meals or select from gallery
 
-Add descriptions and categorize entries (Breakfast, Lunch, Dinner, Snacks)
+✏️ Add detailed descriptions of meals
 
-View, edit, and delete journal entries
+🗂️ Categorize entries (Breakfast, Lunch, Dinner, Snacks)
 
-Filter journal entries by category
+🔍 Filter entries by category
 
-Offline data storage using SQLite
+✏️ Edit existing entries
+
+🗑️ Delete entries with swipe gestures
+
+📅 Automatic date tracking
+
+🔒 User-specific journal entries
+
+Technologies Used
+React Native
+
+Expo Camera
+
+Expo Image Picker
+
+SQLite Database
+
+React Native Swipe List View
+
+React Native Picker
 
 Installation
-Prerequisites
-Node.js and npm/yarn installed
-
-Expo CLI installed globally (npm install -g expo-cli)
-
-A device or emulator to run the app
-
-Steps
-Clone the repository
+Clone the repository:
 
 bash
-git clone <repository-url>
-cd <repository-folder>
-Install dependencies
+git clone https://github.com/yourusername/food-journal-app.git
+cd food-journal-app
+Install dependencies:
 
 bash
 npm install
 # or
 yarn install
-Install Expo SQLite
-
-The app uses SQLite for local database storage. Install the Expo SQLite package:
-
-bash
-expo install expo-sqlite
-Install Expo Camera and Media Library
-
-For capturing photos and accessing the gallery, install:
-
-bash
-expo install expo-camera expo-media-library expo-image-picker
-Install additional dependencies
-
-The app uses other packages such as react-native-swipe-list-view and @react-native-picker/picker:
-
-bash
-npm install react-native-swipe-list-view @react-native-picker/picker
-# or
-yarn add react-native-swipe-list-view @react-native-picker/picker
-Database Setup (SQLite)
-The app uses SQLite for storing journal entries locally. The database operations are handled via a helper function executeSql (assumed to be in components/database/database.js).
-
-The database schema includes a journal table with fields: id, userId, imageUri, text, category, and date.
-
-Entries are linked to users via userId (passed as a route parameter).
-
-CRUD operations (Create, Read, Update, Delete) are performed using SQL queries executed through the SQLite interface.
-
-Running the App
-Start the Expo development server:
+Start the development server:
 
 bash
 expo start
-Use the Expo Go app on your mobile device or an emulator to run the app.
+Configuration
+Make sure you have Expo CLI installed:
 
-Permissions
-The app requests the following permissions at runtime:
+bash
+npm install -g expo-cli
+For camera functionality, you'll need to configure permissions in your app.json:
 
-Camera access to take photos
+json
+{
+  "expo": {
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos to let you select meal images."
+        }
+      ]
+    ]
+  }
+}
+Database Schema
+The app uses SQLite with the following schema:
 
-Media library access to select images from the gallery
+sql
+CREATE TABLE IF NOT EXISTS journal (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  userId TEXT NOT NULL,
+  imageUri TEXT NOT NULL,
+  text TEXT NOT NULL,
+  category TEXT NOT NULL,
+  date TEXT NOT NULL
+);
+Component Structure
+HomeScreen.js - Main screen containing:
 
-Make sure to grant these permissions when prompted.
+Camera/image capture functionality
 
-Usage
-Tap Take Photo to open the camera and capture an image.
+Journal entry form
 
-Tap Choose from Gallery to pick an existing image.
+List of existing entries
 
-Enter a description and select a category.
+Filtering capabilities
 
-Tap Save Journal to save the entry.
+Known Issues
+Camera may show black screen on some Android devices (workaround included)
 
-Existing entries can be edited or deleted by swiping on the list items.
+Image quality may vary depending on device
 
-Filter entries by category using the picker at the top of the journal list.
+Performance may degrade with very large numbers of entries
 
-Code Highlights
-Uses React hooks (useState, useEffect, useRef) for state and lifecycle management.
+Future Improvements
+🍎 Nutrition tracking
 
-Implements camera functionality with expo-camera.
+📊 Meal statistics and insights
 
-Image selection via expo-image-picker.
+☁️ Cloud backup/sync
 
-List management with react-native-swipe-list-view.
+🔗 Social sharing
 
-Category filtering with @react-native-picker/picker.
+🔑 Biometric authentication
 
-Data persistence with Expo SQLite.
+Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-Troubleshooting
-If camera or media library permissions are denied, the app will show a message prompting to enable them.
-
-Database errors during CRUD operations will show alerts.
-
-Ensure your device or emulator supports camera and media library features.
-
+License
+MIT
