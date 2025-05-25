@@ -14,12 +14,6 @@ A mobile food journal application that helps users track their meals with photos
 - **Search & Filter**: Find entries by category
 - **Responsive Design**: Works on both iOS and Android
 
-## 📸 Screenshots
-
-| Add Entry | View Entries | Camera |
-|-----------|-------------|--------|
-| ![Add](screenshots/add.jpg) | ![List](screenshots/list.jpg) | ![Camera](screenshots/camera.jpg) |
-
 ## 🛠️ Installation
 
 1. Clone the repository:
