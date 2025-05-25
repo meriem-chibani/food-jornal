@@ -1,43 +1,31 @@
-App Screenshot <!-- Replace with actual screenshot -->
+# 🍽️ Food Journal - React Native App
 
-A mobile application built with React Native that allows users to track their daily meals with photos, descriptions, and categories.
+![React Native](https://img.shields.io/badge/react_native-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Expo](https://img.shields.io/badge/expo-1C1E24?style=for-the-badge&logo=expo&logoColor=#D04A37)
 
-Features
-📷 Take photos of meals or select from gallery
+A mobile food journal application that helps users track their meals with photos, descriptions, and categories.
 
-✏️ Add detailed descriptions of meals
+## ✨ Features
 
-🗂️ Categorize entries (Breakfast, Lunch, Dinner, Snacks)
+- **Camera Integration**: Capture meal photos directly in-app
+- **Gallery Selection**: Choose existing photos from device
+- **Meal Categorization**: Organize by Breakfast/Lunch/Dinner/Snacks
+- **Swipe Actions**: Edit or delete entries with swipe gestures
+- **Search & Filter**: Find entries by category
+- **Responsive Design**: Works on both iOS and Android
 
-🔍 Filter entries by category
+## 📸 Screenshots
 
-✏️ Edit existing entries
+| Add Entry | View Entries | Camera |
+|-----------|-------------|--------|
+| ![Add](screenshots/add.jpg) | ![List](screenshots/list.jpg) | ![Camera](screenshots/camera.jpg) |
 
-🗑️ Delete entries with swipe gestures
+## 🛠️ Installation
 
-📅 Automatic date tracking
-
-🔒 User-specific journal entries
-
-Technologies Used
-React Native
-
-Expo Camera
-
-Expo Image Picker
-
-SQLite Database
-
-React Native Swipe List View
-
-React Native Picker
-
-Installation
-Clone the repository:
-
-bash
-git clone https://github.com/yourusername/food-journal-app.git
-cd food-journal-app
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/food-journal-app.git
+   cd food-journal-app
 Install dependencies:
 
 bash
@@ -48,31 +36,30 @@ Start the development server:
 
 bash
 expo start
-Configuration
-Make sure you have Expo CLI installed:
+⚙️ Configuration
+Environment Setup
+Install Expo CLI globally:
 
 bash
 npm install -g expo-cli
-For camera functionality, you'll need to configure permissions in your app.json:
+Configure permissions in app.json:
 
 json
 {
   "expo": {
     "plugins": [
-      [
-        "expo-image-picker",
-        {
-          "photosPermission": "The app accesses your photos to let you select meal images."
-        }
-      ]
+      ["expo-image-picker", {
+        "photosPermission": "App needs photo access for meal images"
+      }],
+      ["expo-camera", {
+        "cameraPermission": "App needs camera access to take meal photos"
+      }]
     ]
   }
 }
-Database Schema
-The app uses SQLite with the following schema:
-
+🗃️ Database Schema
 sql
-CREATE TABLE IF NOT EXISTS journal (
+CREATE TABLE journal (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   userId TEXT NOT NULL,
   imageUri TEXT NOT NULL,
@@ -80,37 +67,24 @@ CREATE TABLE IF NOT EXISTS journal (
   category TEXT NOT NULL,
   date TEXT NOT NULL
 );
-Component Structure
-HomeScreen.js - Main screen containing:
+🏗️ Project Structure
+/src
+├── components/
+│   ├── database/       # Database operations
+├── screens/
+│   └── HomeScreen.js   # Main application screen
+🤝 Contributing
+Contributions are welcome! Please follow these steps:
 
-Camera/image capture functionality
+Fork the project
 
-Journal entry form
+Create your feature branch (git checkout -b feature/AmazingFeature)
 
-List of existing entries
+Commit your changes (git commit -m 'Add some amazing feature')
 
-Filtering capabilities
+Push to the branch (git push origin feature/AmazingFeature)
 
-Known Issues
-Camera may show black screen on some Android devices (workaround included)
+Open a Pull Request
 
-Image quality may vary depending on device
-
-Performance may degrade with very large numbers of entries
-
-Future Improvements
-🍎 Nutrition tracking
-
-📊 Meal statistics and insights
-
-☁️ Cloud backup/sync
-
-🔗 Social sharing
-
-🔑 Biometric authentication
-
-Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-License
-MIT
+📄 License
+Distributed under the MIT License. See LICENSE for more information.
