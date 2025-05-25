@@ -18,7 +18,7 @@ A mobile food journal application that helps users track their meals with photos
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/food-journal-app.git
+   git clone https://github.com/meriem-chibani/food-jornal.git
    cd food-journal-app
 Install dependencies:
 
