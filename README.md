@@ -24,35 +24,55 @@ Install dependencies:
 
 bash
 npm install
-# or
+### or
 yarn install
 Start the development server:
 
-bash
-expo start
+   ```bash
+   expo start
+ ```
+
 ⚙️ Configuration
 Environment Setup
 Install Expo CLI globally:
 
-bash
+ ```bash
 npm install -g expo-cli
+```
+
 Configure permissions in app.json:
 
+ ```bash
 json
 {
+
   "expo": {
+
     "plugins": [
+
       ["expo-image-picker", {
+
         "photosPermission": "App needs photo access for meal images"
       }],
+
       ["expo-camera", {
+
         "cameraPermission": "App needs camera access to take meal photos"
+
       }]
+
     ]
+
   }
+
 }
+ ```
+
 🗃️ Database Schema
+
 sql
+ ``` bash
+
 CREATE TABLE journal (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   userId TEXT NOT NULL,
@@ -61,6 +81,8 @@ CREATE TABLE journal (
   category TEXT NOT NULL,
   date TEXT NOT NULL
 );
+ ```
+
 🏗️ Project Structure
 
 /src
